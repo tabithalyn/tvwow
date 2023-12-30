@@ -9,17 +9,16 @@ import Person from "./pages/Person";
 import Navbar from "./components/Navbar";
 import Seasons from "./pages/Seasons";
 import SeasonEpisodes from "./pages/SeasonEpisodes";
+import Shows from "./pages/Shows";
 
 function App() {
-
-  // https://www.tvmaze.com/api
-
 
   return (
     <>
     <Navbar />
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/shows" element={<Shows />} />
       <Route path="/episodes" element={<Episodes />} />
       <Route path="/episodes/:id" element={<Episode />} />
       <Route path="/seasons-episodes/:id" element={<SeasonEpisodes />} />

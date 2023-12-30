@@ -55,8 +55,8 @@ const SeasonEpisodes = () => {
             </span>
           </p>
           
-          <div className="w-4/5 bg-blue-200 p-4 max-h-40 overflow-y-auto rounded-xl mb-3">{parse(item.summary)}</div>
-          <div className="w-full text-center">📊{item.rating?.average}</div>
+          <div className="w-4/5 bg-blue-200 p-4 max-h-40 overflow-y-auto rounded-xl mb-3 text-[15px]">{parse(item.summary)}</div>
+          <div className="w-full text-center tracking-wide">📊 {item.rating?.average}</div>
         </div>
       )) : null}
       </div>
