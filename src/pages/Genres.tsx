@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
 
 const Genres = () => {
@@ -8,16 +7,19 @@ const Genres = () => {
   useEffect(() => {
     const url = `https://api.tvmaze.com/shows/${id}`;
     setIsLoading(true);
-    const fetch = async () => {
+    const fetchData = async () => {
       try {
-        const {data} = await axios.get(url);
-        setTypes(data.type);
-        setIsLoading(false);
+        setIsLoading(true);
+        const response = await fetch(url);
+        const data = await response.json();
+        setTypes(data);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     }
-    fetch();
+    fetchData();
   }, [id]);
 
   /*

@@ -19,5 +19,16 @@ export interface TvShow {
   },
   summary: string,
   status: string,
-  url: string
+  url: string,
+  _embedded: {
+    cast: {
+      person: {
+        id: number,
+        name: string,
+        image: {
+          medium: string
+        }
+      }
+    }[]
+  }
 }

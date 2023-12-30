@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { BounceLoader } from "react-spinners";
@@ -20,16 +19,19 @@ const Episode = () => {
   useEffect(() => {
     const url = `https://api.tvmaze.com/shows/${id}/episodes`;
     setIsLoading(true);
-    const fetch = async () => {
+    const fetchData = async () => {
       try {
-        const {data} = await axios.get(url);
+        setIsLoading(true);
+        const response = await fetch(url);
+        const data = await response.json();
         setEpisodeData(data);
-        setIsLoading(false);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     }
-    fetch();
+    fetchData();
   }, [id]);
 
   return (

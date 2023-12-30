@@ -55,7 +55,7 @@ const People = () => {
           <div className="w-full justify-center py-5 flex flex-wrap gap-3">
             {peopleData.map((item:Person, index) => (
               <div key={index} className="flex flex-wrap w-1/4 border border-teal-500 rounded-2xl shadow-xl">
-                <div key={index} className="w-full bg-mutedBeige flex justify-center flex-wrap rounded-2xl overflow-hidden">
+                <div className="w-full bg-mutedBeige flex justify-center flex-wrap rounded-2xl overflow-hidden">
                   <div className="w-full bg-tealMed p-2 text-center text-xl font-extrabold">{item.person.name}</div>
                   {item.person.birthday ? (
                     <div className="w-full bg-lightBlue p-2 text-center text-sm">

@@ -21,17 +21,21 @@ const ShowResults = (props: { error: null; data: [] | null; }) => {
     <>
     {
      listItem?.map((element:TvShow) => (
-          <li key={element.id}>
-            <div>
-              <a href={element.url}>
-                {element.name}
-              </a>
-            </div>
-            <div>
-              {element.image ? (<img src={element.image.medium} alt={element.name} />) : (<div><img src={noImageAvailable} /></div>)}
-            </div>
-          </li>
-        )
+        <li key={element.id}>
+          <div>
+            <a href={element.url}>
+              {element.name}
+            </a>
+          </div>
+          <div>
+            {element.image ? (
+              <img src={element.image.medium} alt={element.name} />
+            ) : (
+              <div><img src={noImageAvailable} /></div>
+            )}
+          </div>
+        </li>
+      )
      )
     }
     <ul>

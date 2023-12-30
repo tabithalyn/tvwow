@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import Seasons from "./pages/Seasons";
 import SeasonEpisodes from "./pages/SeasonEpisodes";
 import Shows from "./pages/Shows";
+import TvShow from "./pages/TvShow";
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
       <Route path="/people/:id" element={<Person />} />
       <Route path="/genre" element={<Genres />} />
       <Route path="/genre/:id" element={<Genre />} />
+      <Route path="/tv-show/:id" element={<TvShow />} />
     </Routes>
     </>
   );
