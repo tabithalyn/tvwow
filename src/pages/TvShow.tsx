@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { TvShow as TVSHOW } from "../data/ITvShow";
 import { BounceLoader } from "react-spinners";
 import parse from "html-react-parser";
+import Cast from "../components/Cast";
 
 const TvShow = () => {
   const [tvShowData, setTvShowData] = useState<TVSHOW[]>([]);
@@ -28,7 +29,7 @@ const TvShow = () => {
   }, [id]);
 
   return (
-    <div className="w-full flex items-center justify-center flex-wrap gap-3 h-screen mt-16">
+    <div className="w-full flex items-center justify-center flex-wrap gap-3 h-screen mt-8 mb-4">
       {isLoading ? <BounceLoader /> : null}
       <div className="w-full flex justify-center py-5">
         <div className="w-3/5">
@@ -43,13 +44,16 @@ const TvShow = () => {
               <span className="bg-tealMed p-2 text-[11px] text-tealDark font-medium uppercase rounded-full">{item.network.name}</span>
               <span className="bg-softGreen p-2 text-[11px] text-tealDark font-medium uppercase rounded-full">{item.network.country.name}</span>
             </div>
+            <div className="w-full bg-mutedBeige p-2 flex flex-wrap justify-center gap-2">
+              {
+                item.genres.map((genre, index) => (
+                  <span className="bg-orange-300 p-2 text-[11px] text-orange-800 font-medium uppercase rounded-full" key={index}>{genre}</span>
+                ))
+              }
+            </div>
             <div className="w-full bg-mutedBeige py-3 px-6 my-3 h-20 overflow-y-auto text-[15px]">{parse(item.summary)}</div>
             <div className="w-full bg-mutedBeige py-3 px-6 my-3 text-[15px]">
-              {item._embedded.cast.filter((_item, index) => index < 10).map((cast, index) => (
-                <div key={index}>
-                  <p>{cast.person.name}</p>
-                </div>
-              ))}
+              <Cast i={item.id} />
             </div>
             <div className="flex flex-wrap justify-center w-full gap-2 p-2 mb-4">
               <Link to={`/seasons/${item.id}`} className="w-[48%] text-center p-2 rounded-xl bg-orangey uppercase text-[12px] font-medium hover:tracking-wider transition-all hover:bg-opacity-80 border border-transparent hover:border hover:border-[#c68b50]">Seasons</Link>

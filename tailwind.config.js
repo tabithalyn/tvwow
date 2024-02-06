@@ -15,6 +15,12 @@ export default {
         "orangey": "#DD9A53",
         "pinky": "#C26492",
         "darkestTeal": "#001E21",
+      },
+      screens: {
+        xs: "300px"
+      },
+      fontFamily: {
+        "delicious": "'Delicious Handrawn', cursive"
       }
     },
   },

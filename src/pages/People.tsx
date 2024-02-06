@@ -26,7 +26,7 @@ const People = () => {
   }
 
   return (
-    <div className="w-full flex items-center justify-center flex-wrap gap-3 h-screen mt-10">
+    <div className="w-full flex items-center justify-center flex-wrap gap-3 h-[90vh]">
       <div className="bg-softGreen w-3/5 flex justify-center px-3 py-4 gap-3 rounded-xl">
         <input
           type="text"
@@ -43,10 +43,10 @@ const People = () => {
           onKeyDown={(e) => {
             if (e.key === "Enter" && searchTerm) fetchData()
           }}
-          className="p-2 border border-gray-600 w-1/3"
+          className="py-2.5 px-6 rounded"
           placeholder="Search for a person..."
         />
-        <button onClick={fetchData} className="border border-gray-500 p-3" disabled={!emptySearch}>Search</button>
+        <button onClick={fetchData} className="outline outline-tealMed py-2 px-6 rounded hover:outline-tealMed hover:bg-tealMed transition-all text-tealDark hover:text-[#22575c] text-sm" disabled={!emptySearch}>GO</button>
       </div>
       <div className="text-black w-full flex items-center justify-center flex-wrap">
       {loading ? <p>Loading...</p> : null}

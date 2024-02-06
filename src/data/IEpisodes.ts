@@ -1,5 +1,6 @@
 export interface IEpisodes {
   name: string,
+  url: string;
   season: number,
   number: number,
   airdate: string,

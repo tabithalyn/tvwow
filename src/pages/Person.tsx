@@ -4,6 +4,7 @@ import { BounceLoader } from "react-spinners";
 import { SinglePerson  } from "../data/IPerson";
 import moment from "moment";
 import noImage from "../assets/no-image-available.png";
+import Credits from "../components/Credits";
 
 const Person = () => {
   const [personData, setPersonData] = useState<SinglePerson|null>(null);
@@ -37,8 +38,8 @@ const Person = () => {
     <div>
       {
         personData ? (
-          <div className="w-full justify-center py-5 flex flex-wrap gap-3">
-            <div key={personData.id} className="flex flex-wrap w-3/4 border border-teal-500 rounded-2xl shadow-xl">
+          <div className="w-full justify-center py-5 flex flex-wrap gap-3 mt-48">
+            <div key={personData.id} className="flex flex-wrap w-2/4 border border-teal-500 rounded-2xl shadow-xl">
               <div className="w-full bg-mutedBeige flex justify-center flex-wrap rounded-2xl overflow-hidden">
                 <div className="w-full bg-tealMed p-2 text-center text-xl font-extrabold">{personData.name}</div>
                 {personData.birthday ? (
@@ -64,8 +65,15 @@ const Person = () => {
                       <span className="bg-tealMed p-2 text-[11px] text-tealDark font-medium uppercase rounded-full">{personData.country.name}</span>
                     ) : null}
                   </div>
+                  <div className="flex flex-wrap gap-1 w-3/4 justify-center h-[200px] overflow-y-auto my-4">
+                    {personData._embedded.castcredits.map((c, index) => (
+                      <div key={index} className="flex flex-wrap w-full p-2">
+                        <Credits id={(c._links.show.href).slice(29)} />
+                      </div>
+                    ))}
+                  </div>
                 <div className="flex flex-wrap justify-center w-full gap-2 p-2 mb-4">
-                  <a href={personData.url} className={`w-[48%] text-center p-2 bg-pinky rounded-xl uppercase text-[12px] font-medium hover:tracking-wider transition-all hover:bg-opacity-80 border border-transparent hover:border hover:border-[#ad5775] ${!personData.birthday && "pt-2 h-[83%]"}`}>TV Maze page</a>
+                  <a href={personData.url} className={`w-[48%] text-center p-2 hover:-mx-1 bg-pinky rounded-xl uppercase text-[12px] font-medium hover:tracking-wider transition-all hover:bg-opacity-80 border border-transparent hover:border hover:border-[#ad5775] ${!personData.birthday && "pt-2 h-[83%]"}`}>TV Maze page</a>
                 </div>
                 </div>
               </div>
